@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Progetto_Market_Admin
@@ -31,7 +24,6 @@ namespace Progetto_Market_Admin
         public void LetturaDati()
         {
             var result = DB_Operation.GetListaProfili();
-
             if (string.IsNullOrEmpty(result.Errore))
             {
                 if (result.ListaProfili.Count > 0)

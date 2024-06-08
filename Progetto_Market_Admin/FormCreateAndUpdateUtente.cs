@@ -151,7 +151,7 @@ namespace Progetto_Market_Admin
                     Utenza = txbUtenza.Text.Trim(),
                     Passaparola = txbPass.Text.Trim(),
                     Profilo = Convert.ToInt32(cmbProfili.SelectedValue),
-                    ID = DB_Operation.GetIdUtente(),
+                    ID = DB_Operation.GetLastIdUtente(),
                     Attivo = true
                 };
 

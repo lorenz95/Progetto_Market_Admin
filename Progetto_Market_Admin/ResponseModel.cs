@@ -15,7 +15,7 @@ namespace Progetto_Market_Admin
             public List<Profilo> ListaProfili { get; set; }
         }
 
-        public class Response_Utenti : Response_Serializable
+        public class Response_User : Response_Serializable
         {
             public List<Utente> ListaUtenti { get; set; }
         }

@@ -10,10 +10,10 @@ namespace Progetto_Market_Admin
 {
     class DB_Operation
     {
-        private static string BASE_DIRECTORY = AppDomain.CurrentDomain.BaseDirectory;
-        public static string pathProfili = BASE_DIRECTORY + @"\DataBase\Profili.json";
-        public static string pathUtenti = BASE_DIRECTORY + @"\DataBase\Utenti.json";
-        private static readonly string pathFornitori = BASE_DIRECTORY + @"\Database\Fornitori.json";
+        private static readonly string BASE_DIRECTORY_DATABASE = AppDomain.CurrentDomain.BaseDirectory + @"\DataBase\";
+        private static readonly string pathProfili = BASE_DIRECTORY_DATABASE + "Profili.json";
+        private static readonly string pathUtenti = BASE_DIRECTORY_DATABASE + "Utenti.json";
+        private static readonly string pathFornitori = BASE_DIRECTORY_DATABASE + "Fornitori.json";
 
         #region Profili
         public static Response_Profili GetListaProfili()
@@ -45,7 +45,6 @@ namespace Progetto_Market_Admin
         public static void CreateProfilo(Profilo profilo, out string info)
         {
             info = string.Empty;
-
             try
             {
                 if (File.Exists(pathProfili))
@@ -54,15 +53,11 @@ namespace Progetto_Market_Admin
                     var letturaFile = JsonConvert.DeserializeObject<List<Profilo>>(infoListaProfili);
 
                     //Controllo se il profilo da inserire , esiste gia'
-
                     var exist = letturaFile.Exists(lf=>lf.Tipo.ToLower() == profilo.Tipo.ToLower());
-
                     if (exist)
                     {
                         info = string.Format("Il profilo con tipo : {0} esiste gia registrato...", profilo.Tipo);
-                    }
-                    else
-                    {
+                    } else {
                         letturaFile.Add(profilo);
 
                         using (StreamWriter sw = new StreamWriter(pathProfili, false))
@@ -71,25 +66,23 @@ namespace Progetto_Market_Admin
                             sw.Close();
                         }
                     }                  
-                    
-                   
-                }
-                else
-                {
-                    File.Create(pathProfili).Close();
-                    List<Profilo> listaProfili = new List<Profilo>();
-                    listaProfili.Add(profilo);
+                } else {
+                    if (!Directory.Exists(BASE_DIRECTORY_DATABASE))
+                    {
+                        Directory.CreateDirectory(BASE_DIRECTORY_DATABASE);
+                    }
+                    File.Create(pathProfili); //.Close();
+                    List<Profilo> listaProfili = new List<Profilo>
+                    {
+                        profilo
+                    };
                     using (StreamWriter sw = new StreamWriter(pathProfili, false))
                     {
                         sw.WriteLine(JsonConvert.SerializeObject(listaProfili));
                         sw.Close();
                     }
                 }
-
-               
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 info = "Errore : \n" + ex.Message +"\n"+ ex.StackTrace;
             }
         }
@@ -97,22 +90,18 @@ namespace Progetto_Market_Admin
         public static void ModificaProfilo(Profilo profilo, out string info)
         {
             info = string.Empty;
-
             try
             {
                 string infoListaProfili = File.ReadAllText(pathProfili);
                 var letturaFile = JsonConvert.DeserializeObject<List<Profilo>>(infoListaProfili);
 
                 //Controllo se il profilo da inserire , esiste gia'
-
                 var exist = letturaFile.Exists(lf => lf.Tipo.ToLower() == profilo.Tipo.ToLower() && lf.ID != profilo.ID);
 
                 if (exist)
                 {
                     info = string.Format("Il profilo con tipo : {0} esiste gia registrato...", profilo.Tipo);
-                }
-                else
-                {
+                } else {
                     var myProfil = letturaFile.FirstOrDefault(p=>p.ID == profilo.ID);
                     myProfil.Tipo = profilo.Tipo;
                     myProfil.Descrizione = profilo.Descrizione;
@@ -123,9 +112,7 @@ namespace Progetto_Market_Admin
                         sw.Close();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 info = "Errore : \n" + ex.Message + "\n" + ex.StackTrace;
             }
         }
@@ -133,7 +120,6 @@ namespace Progetto_Market_Admin
         public static void EliminazioneProfilo(Profilo profilo, out string info)
         {
             info = string.Empty;
-
             try
             {
                 string infoListaProfili = File.ReadAllText(pathProfili);
@@ -157,9 +143,9 @@ namespace Progetto_Market_Admin
         #endregion
 
         #region Utenti
-        public static Response_Utenti GetListaUtenti()
+        public static Response_User GetListaUtenti()
         {
-            Response_Utenti responseProfili = new Response_Utenti();
+            Response_User responseProfili = new Response_User();
             try
             {
                 if (File.Exists(pathUtenti))
@@ -186,7 +172,6 @@ namespace Progetto_Market_Admin
         public static void CreateUser(Utente utente, out string info)
         {
             info = string.Empty;
-
             try
             {
                 if (File.Exists(pathUtenti))
@@ -200,9 +185,7 @@ namespace Progetto_Market_Admin
                     if (exist)
                     {
                         info = string.Format("Il utente con utenza : {0} esiste gia registrato...", utente.Utenza);
-                    }
-                    else
-                    {
+                    } else {
                         letturaFile.Add(utente);
                         using (StreamWriter sw = new StreamWriter(pathUtenti, false))
                         {
@@ -210,9 +193,7 @@ namespace Progetto_Market_Admin
                             sw.Close();
                         }
                     }
-                }
-                else
-                {
+                } else {
                     File.Create(pathUtenti).Close();
                     List<Utente> listaUtenti = new List<Utente>
                     {
@@ -224,13 +205,12 @@ namespace Progetto_Market_Admin
                         sw.Close();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 info = "Errore : \n" + ex.Message + "\n" + ex.StackTrace;
             }
         }
         #endregion 
+        
         #region Fornitori
         public static Response_Fornitori GetListaFornitori()
         {
@@ -261,24 +241,19 @@ namespace Progetto_Market_Admin
         public static void CreateFornitore(Fornitore fornitore, out string info)
         {
             info = string.Empty;
-
             try {
-
                 if (File.Exists(pathFornitori))
                 {
                     string infoListaFornitori = File.ReadAllText(pathFornitori);
                     var letturaFile = JsonConvert.DeserializeObject<List<Fornitore>>(infoListaFornitori);
 
                     //Controllo se il profilo da inserire , esiste gia'
-
                     var exist = letturaFile.Exists(lf => lf.PIva.ToLower() == fornitore.PIva.ToLower());
 
                     if (exist)
                     {
                         info = string.Format("Il fornitore con P.IVA : {0} esiste gia registrato...", fornitore.PIva);
-                    }
-                    else
-                    {
+                    } else {
                         letturaFile.Add(fornitore);
 
                         using (StreamWriter sw = new StreamWriter(pathFornitori, false))
@@ -287,12 +262,10 @@ namespace Progetto_Market_Admin
                             sw.Close();
                         }
                     }
-
-
                 }
-                else
-                {
-                    File.Create(pathFornitori).Close();
+                else {
+                    //File.Create(pathFornitori).Close();
+                    File.Create(pathFornitori);
                     List<Fornitore> listaFornitori = new List<Fornitore>
                     {
                         fornitore
@@ -303,14 +276,12 @@ namespace Progetto_Market_Admin
                         sw.Close();
                     }
                 }
-
             }
             catch (Exception ex) { info = "Errore : \n" + ex.Message + "\n" + ex.StackTrace; }
-
         }
         #endregion
         
-        public static int GetIdUtente()
+        public static int GetLastIdUtente()
         {
             //int Id = 0;
             //if (File.Exists(pathUtenti))
@@ -323,7 +294,7 @@ namespace Progetto_Market_Admin
             return GetId(pathUtenti);
         }
 
-        public static int GetIdFornitore()
+        public static int GetLastIdFornitore()
         {
             //int Id = 0;
             //if (File.Exists(pathFornitori))
@@ -337,7 +308,7 @@ namespace Progetto_Market_Admin
 
         }
 
-        public static int GetIdProfili()
+        public static int GetLastIdProfili()
         {
             //int Id = 0;
             //if (File.Exists(pathProfili))
@@ -351,7 +322,6 @@ namespace Progetto_Market_Admin
         }
 
         private static int GetId(string path) {
-
             int id = 0;
             if (File.Exists(path))
             {   

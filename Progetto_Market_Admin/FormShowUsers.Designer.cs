@@ -35,7 +35,7 @@ namespace Progetto_Market_Admin
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataUserGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@ namespace Progetto_Market_Admin
             this.btnNew = new System.Windows.Forms.Button();
             this.grbSearch.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataUserGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,9 +71,9 @@ namespace Progetto_Market_Admin
             this.grbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbSearch.ForeColor = System.Drawing.Color.SteelBlue;
             this.grbSearch.Location = new System.Drawing.Point(303, 79);
-            this.grbSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.grbSearch.Name = "grbSearch";
-            this.grbSearch.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbSearch.Padding = new System.Windows.Forms.Padding(4);
             this.grbSearch.Size = new System.Drawing.Size(596, 105);
             this.grbSearch.TabIndex = 2;
             this.grbSearch.TabStop = false;
@@ -100,7 +100,7 @@ namespace Progetto_Market_Admin
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(480, 39);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 57);
             this.button1.TabIndex = 1;
@@ -111,7 +111,7 @@ namespace Progetto_Market_Admin
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(28, 50);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(420, 30);
             this.textBox1.TabIndex = 0;
@@ -121,30 +121,30 @@ namespace Progetto_Market_Admin
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.DataUserGridView);
             this.groupBox1.Controls.Add(this.btnNew);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox1.Location = new System.Drawing.Point(25, 220);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1239, 523);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista";
             // 
-            // dataGridView1
+            // DataUserGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DataUserGridView.AllowUserToAddRows = false;
+            this.DataUserGridView.AllowUserToDeleteRows = false;
+            this.DataUserGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeight = 35;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DataUserGridView.BackgroundColor = System.Drawing.Color.White;
+            this.DataUserGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DataUserGridView.ColumnHeadersHeight = 35;
+            this.DataUserGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
@@ -154,17 +154,17 @@ namespace Progetto_Market_Admin
             this.Column9,
             this.Column4,
             this.Column5});
-            this.dataGridView1.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 90);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(1223, 426);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.DataUserGridView.GridColor = System.Drawing.Color.SteelBlue;
+            this.DataUserGridView.Location = new System.Drawing.Point(8, 90);
+            this.DataUserGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.DataUserGridView.Name = "DataUserGridView";
+            this.DataUserGridView.ReadOnly = true;
+            this.DataUserGridView.RowHeadersVisible = false;
+            this.DataUserGridView.RowHeadersWidth = 51;
+            this.DataUserGridView.RowTemplate.Height = 30;
+            this.DataUserGridView.Size = new System.Drawing.Size(1223, 426);
+            this.DataUserGridView.TabIndex = 3;
+            this.DataUserGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Column1
             // 
@@ -251,7 +251,7 @@ namespace Progetto_Market_Admin
             this.btnNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Location = new System.Drawing.Point(1152, 26);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(79, 57);
             this.btnNew.TabIndex = 2;
@@ -268,7 +268,7 @@ namespace Progetto_Market_Admin
             this.Controls.Add(this.grbSearch);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormShowUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Users";
@@ -277,7 +277,7 @@ namespace Progetto_Market_Admin
             this.grbSearch.ResumeLayout(false);
             this.grbSearch.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataUserGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +291,7 @@ namespace Progetto_Market_Admin
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataUserGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

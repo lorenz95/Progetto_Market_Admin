@@ -146,7 +146,6 @@
     <EmbeddedResource Include="FormShowUsers.resx">
       <DependentUpon>FormShowUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bin\Debug\DataBase\Profili.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-delete-file-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\DataBase\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

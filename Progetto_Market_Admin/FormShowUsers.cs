@@ -9,7 +9,7 @@ namespace Progetto_Market_Admin
         public FormShowUsers()
         {
             InitializeComponent();
-            Ausiliare.DataGridViewStyle(dataGridView1);
+            Ausiliare.DataGridViewStyle(DataUserGridView);
         }
 
         private void frmUsers_Load(object sender, EventArgs e)
@@ -25,13 +25,13 @@ namespace Progetto_Market_Admin
             {
                 if (result.ListaUtenti.Count > 0)
                 {
-                    dataGridView1.Rows.Clear();
+                    DataUserGridView.Rows.Clear();
                     foreach (var item in result.ListaUtenti)
                     {
-                        dataGridView1.Rows.Add(item.ID, item.Nome, item.Cognome, item.Utenza,item.Passaparola,item.Profilo,item.Attivo);
+                        DataUserGridView.Rows.Add(item.ID, item.Nome, item.Cognome, item.Utenza,item.Passaparola,item.Profilo,item.Attivo);
                     }
 
-                    dataGridView1.ClearSelection();
+                    DataUserGridView.ClearSelection();
                 }
             }
             else
@@ -53,7 +53,7 @@ namespace Progetto_Market_Admin
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow dataGridViewRow = dataGridView1.Rows[e.RowIndex];
+            DataGridViewRow dataGridViewRow = DataUserGridView.Rows[e.RowIndex];
 
             int id = Convert.ToInt32(dataGridViewRow.Cells[0].Value);
             string nome = dataGridViewRow.Cells[1].Value.ToString();
@@ -62,11 +62,11 @@ namespace Progetto_Market_Admin
             string passaparola = dataGridViewRow.Cells[4].Value.ToString();
             int profilo = Convert.ToInt32(dataGridViewRow.Cells[5].Value);
 
-            if (e.ColumnIndex == dataGridView1.Columns[7].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == DataUserGridView.Columns[7].Index && e.RowIndex >= 0)
             {
                 new FormCreateAndUpdateUtente(this, 2, id, nome, cognome, utenza, passaparola, profilo).ShowDialog();
             }
-            if (e.ColumnIndex == dataGridView1.Columns[8].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == DataUserGridView.Columns[8].Index && e.RowIndex >= 0)
             {
                 new FormCreateAndUpdateUtente(this, 3, id, nome, cognome, utenza, passaparola, profilo).ShowDialog();
             }

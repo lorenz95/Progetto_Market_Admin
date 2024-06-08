@@ -76,7 +76,7 @@ namespace Progetto_Market_Admin
             }
             */
 
-            int idFornitore = DB_Operation.GetIdFornitore();
+            int idFornitore = DB_Operation.GetLastIdFornitore();
             Fornitore fornitore = new Fornitore()
             {
                 ID = idFornitore, 

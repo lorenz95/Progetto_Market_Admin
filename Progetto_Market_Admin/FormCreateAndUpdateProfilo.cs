@@ -100,7 +100,7 @@ namespace Progetto_Market_Admin
                 {
                     Tipo = txbTipo.Text,
                     Descrizione = txbDesc.Text,
-                    ID = DB_Operation.GetIdProfili()
+                    ID = DB_Operation.GetLastIdProfili()
                 };
 
                 string info;
